@@ -17,6 +17,11 @@ resolver = "2"
 name = "clarity"
 path = "./src/libclarity.rs"
 
+[[bench]]
+name = "runtime"
+harness = false
+required-features = ["testing"]
+
 [dependencies]
 rand = { workspace = true }
 rand_chacha = { workspace = true }
@@ -44,9 +49,7 @@ features = ["std"]
 [dev-dependencies]
 assert-json-diff = "1.0.0"
 mutants = "0.0.3"
-# a nightly rustc regression (35dbef235 2021-03-02) prevents criterion from compiling
-#  but it isn't necessary for tests: only benchmarks. therefore, commenting out for now.
-# criterion = "0.3"
+criterion = "0.5"
 
 [features]
 default = ["canonical"]
